@@ -6,7 +6,7 @@
 #    By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 17:34:54 by earendil          #+#    #+#              #
-#    Updated: 2022/09/14 15:25:59 by mmarinel         ###   ########.fr        #
+#    Updated: 2022/09/18 20:16:53 by mmarinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ BOLDWHITE	:= "\033[1m\033[37m"
 CC:= @clang++
 CFLAGS:= -std=c++98 -Wall -Werror -Wextra
 
-NAME := smartAnimals
+NAME := bureaucrat_01
 OBJS_DIR:= bin
 OBJS:= $(addprefix $(OBJS_DIR)/, $(shell find . -name "*.cpp" -print | sed 's/\.cpp/\.o/g' | sed 's/\.\///'))
 INCLUDES:= $(shell find . -name "*.hpp" -print)

@@ -6,21 +6,21 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:26:22 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/18 17:44:54 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef COMMON_UTILS_H
+#define COMMON_UTILS_H
+
+# define safe_delete(ptr) {delete ; ptr = nullptr;}
 
 # include "../colors.hpp"
-# include <string>
 # include <iostream>
 
 	//* utils
 
-void	print_line(const std::string& str, const char *color);//* Coercion Polymorphism happens here if we pass const char*
-void	print_funcName(const std::string& funcName);
-
+void	print_line(const char *str, const char *color);
+void	print_funcName(const char *funcName);
 
 #endif /* COMMON_UTILS_H */

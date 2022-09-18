@@ -6,13 +6,13 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:39:02 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:25:06 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/11 15:22:57 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.hpp"
 
-void	print_line(const std::string& str, const char *color)
+void	print_line(const char *str, const char *color)
 {
 	std::cout << color
 		<< str
@@ -20,7 +20,7 @@ void	print_line(const std::string& str, const char *color)
 		<< std::endl;
 }
 
-void	print_funcName(const std::string& funcName)
+void	print_funcName(const char *funcName)
 {
 	std::cout
 		<< YELLOW
