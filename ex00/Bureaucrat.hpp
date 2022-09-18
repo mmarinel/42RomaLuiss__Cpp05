@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:51:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/18 17:50:35 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/18 19:52:24 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ class Bureaucrat
 
 		// Exceptions
 		class GradeTooHighException : public std::exception {
+		public:
 			virtual const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception {
+		public:
 			virtual const char* what() const throw();
 		};
 

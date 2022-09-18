@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/18 17:50:41 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/18 20:04:04 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
 	std::cout << "\e[0;33mFields Constructor called of Bureaucrat\e[0m" << std::endl;
 
-	if (this->_grade BC_HIGHER BC_MAX_GRADE)
-		throw Bureaucrat::GradeTooLowException();
-	if (this->_grade BC_LESSER BC_MIN_GRADE)
+	if (grade BC_HIGHER BC_MAX_GRADE)
+	{
 		throw Bureaucrat::GradeTooHighException();
+	}
+	if (grade BC_LESSER BC_MIN_GRADE)
+	{
+		throw Bureaucrat::GradeTooLowException();
+	}
 	_grade = grade;
 }
 
@@ -85,11 +89,11 @@ void	Bureaucrat::decrement( void )
 // Exceptions
 const char * Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Bureaucrat: grade too high";
+	return BOLDRED "Bureaucrat: grade too high" RESET;
 }
 const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Bureaucrat: grade too low";
+	return BOLDRED "Bureaucrat: grade too low" RESET;
 }
 
 
