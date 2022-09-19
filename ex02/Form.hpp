@@ -1,0 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/19 19:32:36 by mmarinel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FORM_HPP
+# define FORM_HPP
+
+# include "types.hpp"
+# include "Grade.hpp"
+# include "Bureaucrat.hpp"
+
+# include <iostream>
+# include <string>
+
+class Form
+{
+	public:
+		// Constructors
+		Form();
+		Form(const Form &copy);
+		Form(const std::string name, bool is_signed,
+			const int sign_grade, const int exec_grade);
+		
+		// Destructor
+		~Form();
+		
+		// Operators
+		Form & operator=(const Form &assign);
+		
+		// Getters / Setters
+		const std::string	getName() const;
+		bool 				getIs_signed() const;
+		const Grade			getSign_grade() const;
+		const Grade			getExec_grade() const;
+
+		// Logic
+		void	beSigned( const Bureaucrat &br );
+
+		// Exceptions
+		class SignGradeTooHighException : public Grade::GradeTooHighException {
+		public:
+			const char			*msg;
+								SignGradeTooHighException(const Grade::GradeTooHighException& e);
+			virtual const char* what() const throw();
+		};
+		class SignGradeTooLowException : public Grade::GradeTooLowException {
+		public:
+			virtual const char* what() const throw();
+		};
+		class ExecGradeTooHighException : public Grade::GradeTooHighException {
+		public:
+			virtual const char* what() const throw();
+		};
+		class ExecGradeTooLowException : public Grade::GradeTooLowException {
+		public:
+			virtual const char* what() const throw();
+		};
+		
+	private:
+		const std::string _name;
+		bool _is_signed;
+		const Grade _sign_grade;
+		const Grade _exec_grade;
+		
+};
+
+// Stream operators
+std::ostream & operator<<(std::ostream &stream, const Form &object);
+
+#endif
