@@ -6,14 +6,14 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/18 17:44:54 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:15:13 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMON_UTILS_H
 #define COMMON_UTILS_H
 
-# define safe_delete(ptr) {delete ; ptr = nullptr;}
+# define safe_delete(ptr) {delete ptr; ptr = nullptr;}
 
 # include "../colors.hpp"
 # include <iostream>

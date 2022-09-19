@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   Grade.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 10:20:53 by mmarinel         ###   ########.fr       */
+/*   Created: 2022/09/19 10:28:50 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/19 11:10:20 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef GRADE_HPP
+# define GRADE_HPP
 
-# include "Bureaucrat.hpp"
+# include "../colors.hpp"
 # include <iostream>
 # include <string>
 
-class Form
+class Grade
 {
 	public:
 		// Constructors
-		Form();
-		Form(const Form &copy);
-		Form(const std::string name, bool is_signed,
-			const int sign_grade, const int exec_grade);
+		Grade();
+		Grade(const Grade &copy);
+		Grade(int grade);
 		
 		// Destructor
-		~Form();
+		~Grade();
 		
 		// Operators
-		Form & operator=(const Form &assign);
+		Grade & operator=(const Grade &assign);
 		
 		// Getters / Setters
-		const std::string getName() const;
-		bool getIs_signed() const;
-		const int getSign_grade() const;
-		const int getExec_grade() const;
-
-		// Logic
-		void	beSigned( const Bureaucrat &br );
+		int 				getGrade() const;
+		static const Grade	&getMax_grade();
+		static const Grade	&getMin_grade();
 
 		// Exceptions
 		class GradeTooHighException : public std::exception {
@@ -50,16 +45,21 @@ class Form
 		public:
 			virtual const char* what() const throw();
 		};
+
+		// Logic
+		void			increment	( void );
+		void			decrement	( void );
+		static int		compare		( const Grade& g1, const Grade& g2 );
 		
 	private:
-		const std::string _name;
-		bool _is_signed;
-		const int _sign_grade;
-		const int _exec_grade;
+		int _grade;
+		static const Grade	_max_grade;
+		static const Grade	_min_grade;
+		static const int	_inc_factor;
 		
 };
 
 // Stream operators
-std::ostream & operator<<(std::ostream &stream, const Form &object);
+std::ostream & operator<<(std::ostream &stream, const Grade &object);
 
 #endif

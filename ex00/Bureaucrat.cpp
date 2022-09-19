@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/18 20:04:04 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:00:33 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Constructors
 Bureaucrat::Bureaucrat() : _name("nameless")
 {
-	_grade = BC_MAX_GRADE;
+	_grade = Grade::getMin_grade();
 	std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
 }
 
@@ -29,15 +29,15 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
 	std::cout << "\e[0;33mFields Constructor called of Bureaucrat\e[0m" << std::endl;
 
-	if (grade BC_HIGHER BC_MAX_GRADE)
-	{
-		throw Bureaucrat::GradeTooHighException();
+	try {
+		this->_grade = Grade(grade);//* MAY THROW EXCEPTION !!!!!!!!!!
 	}
-	if (grade BC_LESSER BC_MIN_GRADE)
-	{
-		throw Bureaucrat::GradeTooLowException();
+	catch (const Grade::GradeTooLowException &e) {
+		throw Bureaucrat::GradeTooLowException();//! Subject is dumb and made me do this!
 	}
-	_grade = grade;
+	catch (const Grade::GradeTooHighException &e) {
+		throw Bureaucrat::GradeTooHighException();//! Subject is dumb and made me do this!
+	}
 }
 
 
@@ -64,7 +64,7 @@ const std::string Bureaucrat::getName() const
 	return _name;
 }
 
-int Bureaucrat::getGrade() const
+const Grade Bureaucrat::getGrade() const
 {
 	return _grade;
 }
@@ -72,19 +72,24 @@ int Bureaucrat::getGrade() const
 // Logic
 void	Bureaucrat::increment( void )
 {
-	if (this->_grade == BC_MAX_GRADE)
-		throw Bureaucrat::GradeTooHighException();
-	else
-		this->_grade += BC_INC_FACTOR;
+	try {
+		this->_grade.increment();//* may throw Exception!
+	}
+	catch (const Grade::GradeTooHighException &e) {
+		throw Bureaucrat::GradeTooHighException();//! Subject is dumb and made me do this!
+	}
 }
 
 void	Bureaucrat::decrement( void )
 {
-	if (this->_grade == BC_MIN_GRADE)
-		throw Bureaucrat::GradeTooLowException();
-	else
-		this->_grade -= BC_INC_FACTOR;
+	try {
+		this->_grade.decrement();//* may throw Exception!
+	}
+	catch (const Grade::GradeTooLowException &e) {
+		throw Bureaucrat::GradeTooLowException();//! Subject is dumb and made me do this!
+	}
 }
+
 
 // Exceptions
 const char * Bureaucrat::GradeTooHighException::what() const throw()
@@ -95,7 +100,6 @@ const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return BOLDRED "Bureaucrat: grade too low" RESET;
 }
-
 
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Bureaucrat &object)

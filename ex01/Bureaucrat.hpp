@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:51:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/18 20:58:14 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:39:50 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define BC_LESSER >
 
 # include "utils.hpp"
+# include "Grade.hpp"
+
 # include <iostream>
 # include <string>
 
@@ -38,27 +40,26 @@ class Bureaucrat
 		Bureaucrat & operator=( const Bureaucrat &assign );
 		
 		// Getters / Setters
-		const std::string getName() const;
-		int getGrade() const;
-		void setGrade(int grade);
+		const std::string	getName() const;
+		const Grade			getGrade() const;
 
 		// Logic
 		void	increment( void );
 		void	decrement( void );
 
 		// Exceptions
-		class GradeTooHighException : public std::exception {
+		class GradeTooHighException : public Grade::GradeTooHighException {
 		public:
 			virtual const char* what() const throw();
 		};
-		class GradeTooLowException : public std::exception {
+		class GradeTooLowException : public Grade::GradeTooLowException {
 		public:
 			virtual const char* what() const throw();
 		};
 
 	private:
-		const std::string _name;
-		int _grade;
+		const std::string	_name;
+		Grade				_grade;
 		
 };
 

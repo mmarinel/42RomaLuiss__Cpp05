@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/18 20:59:03 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:25:08 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ Form::Form() : _name("nameless"), _sign_grade(150), _exec_grade(150)
 	_is_signed = false;
 }
 
-Form::Form(const Form &copy) : _name("nameless"), _sign_grade(150), _exec_grade(150)
+Form::Form(const Form &copy)
+	: _name(copy._name), _sign_grade(copy._sign_grade),
+		_exec_grade(copy._exec_grade)
 {
 	std::cout << "\e[0;33mCopy Constructor called of Form\e[0m" << std::endl;
 
@@ -33,7 +35,7 @@ Form::Form(
 	const int sign_grade,
 	const int exec_grade
 )
-	: _name("nameless"), _sign_grade(sign_grade), _exec_grade(exec_grade)
+	: _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	std::cout << "\e[0;33mFields Constructor called of Form\e[0m" << std::endl;
 
@@ -78,6 +80,14 @@ const int Form::getExec_grade() const
 	return _exec_grade;
 }
 
+// Logic
+void	Form::beSigned( const Bureaucrat &br )
+{
+	if (br.getGrade() BC_LESSER this->_sign_grade)
+		throw Form::GradeTooLowException();
+	else
+		this->_is_signed = true;
+}
 
 // Exceptions
 const char * Form::GradeTooHighException::what() const throw()
