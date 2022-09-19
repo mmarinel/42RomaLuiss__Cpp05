@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 12:25:32 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:57:42 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,12 @@ const char * Form::GradeTooLowException::what() const throw()
 std::ostream & operator<<(std::ostream &stream, const Form &object)
 {
 	stream
+		<< "{ "
 		<< "form name: "<< object.getName()
 		<< ", is signed: " << object.getIs_signed()
 		<< ", grade to sign: " << object.getSign_grade()
 		<< ", grade to execute: " << object.getExec_grade()
+		<< " }"
 		<< std::endl;
 	return stream;
 }

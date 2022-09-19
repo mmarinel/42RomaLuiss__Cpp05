@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:51:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 11:39:50 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:51:37 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 # define BC_HIGHER <
 # define BC_LESSER >
 
-# include "utils.hpp"
+# include "types.hpp"
 # include "Grade.hpp"
+# include "Form.hpp"
+# include "utils.hpp"
 
 # include <iostream>
 # include <string>
@@ -44,8 +46,9 @@ class Bureaucrat
 		const Grade			getGrade() const;
 
 		// Logic
-		void	increment( void );
-		void	decrement( void );
+		void	increment	( void );
+		void	decrement	( void );
+		void	signForm	( Form &form );
 
 		// Exceptions
 		class GradeTooHighException : public Grade::GradeTooHighException {

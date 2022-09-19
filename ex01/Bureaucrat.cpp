@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 12:00:33 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:52:25 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Constructors
 Bureaucrat::Bureaucrat() : _name("nameless")
 {
-	_grade = Grade::getMin_grade();
+	_grade = Grade::_min_grade;
 	std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
 }
 
@@ -88,6 +88,29 @@ void	Bureaucrat::decrement( void )
 	catch (const Grade::GradeTooLowException &e) {
 		throw Bureaucrat::GradeTooLowException();//! Subject is dumb and made me do this!
 	}
+}
+
+void	Bureaucrat::signForm( Form &form )
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout
+			<< GREEN
+			<< this->_name << "signed " << form
+			<< RESET
+			<< std::endl;
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cout
+			<< RED
+			<< this->_name << " couldn't sign " << form
+			<< " because " << e.what()
+			<< RESET
+			<< std::endl;
+	}
+	
 }
 
 

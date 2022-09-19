@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   types.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 17:01:30 by mmarinel         ###   ########.fr       */
+/*   Created: 2022/09/19 16:50:40 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/19 16:50:58 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#ifndef TYPES_H
+#define TYPES_H
 
-#include <iostream>
+class Grade;
+class Bureaucrat;
+class Form;
 
-
-int	main()
-{
-	return 0;
-}
+#endif /* TYPES_H */
