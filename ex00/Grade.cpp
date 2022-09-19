@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:54:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 11:16:20 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:26:26 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,6 @@ int Grade::getGrade() const
 	return _grade;
 }
 
-const Grade& Grade::getMax_grade()
-{
-	return Grade::_max_grade.getGrade();
-}
-const Grade& Grade::getMin_grade()
-{
-	return Grade::_min_grade.getGrade();
-}
-
 // Exceptions
 const char * Grade::GradeTooHighException::what() const throw()
 {
@@ -88,7 +79,7 @@ int	compare( const Grade& g1, const Grade& g2 )
 
 void	Grade::increment( void )
 {
-	if (Grade::compare(*this, Grade::getMax_grade()) > 0)
+	if (Grade::compare(*this, Grade::_max_grade) > 0)
 		throw Grade::GradeTooHighException();
 	else
 		this->_grade += Grade::_inc_factor;
@@ -96,7 +87,7 @@ void	Grade::increment( void )
 
 void	Grade::decrement( void )
 {
-	if (Grade::compare(*this, Grade::getMin_grade()) < 0)
+	if (Grade::compare(*this, Grade::_min_grade) < 0)
 		throw Grade::GradeTooLowException();
 	else
 		this->_grade -= Grade::_inc_factor;

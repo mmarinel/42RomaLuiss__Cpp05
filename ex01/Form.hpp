@@ -6,14 +6,16 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 10:20:53 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:13:37 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
+# include "Grade.hpp"
 # include "Bureaucrat.hpp"
+
 # include <iostream>
 # include <string>
 
@@ -33,20 +35,20 @@ class Form
 		Form & operator=(const Form &assign);
 		
 		// Getters / Setters
-		const std::string getName() const;
-		bool getIs_signed() const;
-		const int getSign_grade() const;
-		const int getExec_grade() const;
+		const std::string	getName() const;
+		bool 				getIs_signed() const;
+		const Grade			getSign_grade() const;
+		const Grade			getExec_grade() const;
 
 		// Logic
 		void	beSigned( const Bureaucrat &br );
 
 		// Exceptions
-		class GradeTooHighException : public std::exception {
+		class GradeTooHighException : public Grade::GradeTooHighException {
 		public:
 			virtual const char* what() const throw();
 		};
-		class GradeTooLowException : public std::exception {
+		class GradeTooLowException : public Grade::GradeTooLowException {
 		public:
 			virtual const char* what() const throw();
 		};
@@ -54,8 +56,8 @@ class Form
 	private:
 		const std::string _name;
 		bool _is_signed;
-		const int _sign_grade;
-		const int _exec_grade;
+		const Grade _sign_grade;
+		const Grade _exec_grade;
 		
 };
 

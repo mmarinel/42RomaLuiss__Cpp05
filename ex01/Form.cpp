@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 10:25:08 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:25:32 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,18 @@ Form::Form(
 	const int sign_grade,
 	const int exec_grade
 )
-	: _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade)
+	try
+		: _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	std::cout << "\e[0;33mFields Constructor called of Form\e[0m" << std::endl;
 
-	if (sign_grade BC_HIGHER BC_MAX_GRADE)
-		throw Form::GradeTooHighException();
-	if (sign_grade BC_LESSER BC_MIN_GRADE)
-		throw Form::GradeTooLowException();
 	_is_signed = is_signed;
+}
+catch (const Grade::GradeTooLowException &e) {
+	throw Form::GradeTooLowException();//! Subject is dumb and made me do this!
+}
+catch (const Grade::GradeTooHighException &e) {
+	throw Form::GradeTooHighException();//! Subject is dumb and made me do this!
 }
 
 
@@ -71,11 +74,11 @@ bool Form::getIs_signed() const
 {
 	return _is_signed;
 }
-const int Form::getSign_grade() const
+const Grade Form::getSign_grade() const
 {
 	return _sign_grade;
 }
-const int Form::getExec_grade() const
+const Grade Form::getExec_grade() const
 {
 	return _exec_grade;
 }
@@ -83,7 +86,7 @@ const int Form::getExec_grade() const
 // Logic
 void	Form::beSigned( const Bureaucrat &br )
 {
-	if (br.getGrade() BC_LESSER this->_sign_grade)
+	if (Grade::compare(br.getGrade(), this->_sign_grade) < 0)
 		throw Form::GradeTooLowException();
 	else
 		this->_is_signed = true;
