@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:28:50 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 12:09:26 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:00:55 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GRADE_HPP
 
 # include "../colors.hpp"
+
 # include <iostream>
 # include <string>
 
@@ -34,6 +35,8 @@ class Grade
 		
 		// Operators
 		Grade & operator=(const Grade &assign);
+		bool	operator==(const Grade &other);
+		bool	operator!=(const Grade &other);
 		
 		// Getters / Setters
 		int 				getGrade() const;

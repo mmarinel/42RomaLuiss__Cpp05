@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 17:01:30 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:20:02 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 
 int	main()
 {
+	Bureaucrat	b1;
+	Bureaucrat	b2;
 	return 0;
 }

@@ -6,14 +6,16 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 16:57:42 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:16:15 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 // Constructors
-Form::Form() : _name("nameless"), _sign_grade(150), _exec_grade(150)
+Form::Form()
+	: _name("nameless"),
+	_sign_grade(Grade::_min_grade), _exec_grade(Grade::_min_grade)
 {
 	std::cout << "\e[0;33mDefault Constructor called of Form\e[0m" << std::endl;
 
@@ -21,8 +23,8 @@ Form::Form() : _name("nameless"), _sign_grade(150), _exec_grade(150)
 }
 
 Form::Form(const Form &copy)
-	: _name(copy._name), _sign_grade(copy._sign_grade),
-		_exec_grade(copy._exec_grade)
+	: _name(copy._name),
+	_sign_grade(copy._sign_grade), _exec_grade(copy._exec_grade)
 {
 	std::cout << "\e[0;33mCopy Constructor called of Form\e[0m" << std::endl;
 
@@ -36,7 +38,8 @@ Form::Form(
 	const int exec_grade
 )
 	try
-		: _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade)
+		: _name(name),
+		_sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	std::cout << "\e[0;33mFields Constructor called of Form\e[0m" << std::endl;
 

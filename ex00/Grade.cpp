@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:54:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 12:26:26 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:03:58 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ Grade::Grade( int grade )
 	std::cout << "\e[0;33mFields Constructor called of Grade\e[0m" << std::endl;
 
 	this->_grade = grade;
-	if (Grade::compare(*this, Grade::_max_grade) > 0)
-		throw Grade::GradeTooHighException();
-	if (Grade::compare(*this, Grade::_min_grade) < 0)
-		throw Grade::GradeTooLowException();
+	if (this != &Grade::_min_grade && this != &Grade::_max_grade)
+	{
+		if (Grade::compare(*this, Grade::_max_grade) > 0)
+			throw Grade::GradeTooHighException();
+		if (Grade::compare(*this, Grade::_min_grade) < 0)
+			throw Grade::GradeTooLowException();
+	}
 }
 
 // Destructor
@@ -54,6 +57,17 @@ Grade & Grade::operator=(const Grade &assign)
 	_grade = assign.getGrade();
 	return *this;
 }
+
+bool	Grade::operator==(const Grade &other)
+{
+	return (this->_grade == other._grade);
+}
+
+bool	Grade::operator!=(const Grade &other)
+{
+	return (this->_grade != other._grade);
+}
+
 
 // Getters / Setters
 int Grade::getGrade() const
@@ -72,7 +86,7 @@ const char * Grade::GradeTooLowException::what() const throw()
 }
 
 //Logic
-int	compare( const Grade& g1, const Grade& g2 )
+int	Grade::compare( const Grade& g1, const Grade& g2 )
 {
 	return (-1) * (g1.getGrade() - g2.getGrade());
 }
