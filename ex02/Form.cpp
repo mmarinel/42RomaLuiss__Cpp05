@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 12:21:48 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:40:40 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,3 @@ std::ostream & operator<<(std::ostream &stream, const Form &object)
 		<< std::endl;
 	return stream;
 }
-//*** say -v zuzana drll drill drill drll drll drill drill
