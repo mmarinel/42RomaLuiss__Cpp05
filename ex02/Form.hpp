@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 19:32:36 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:47:31 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 class Form
 {
+	protected:
+		virtual void	action( void ) = 0;
 	public:
 		// Constructors
 		Form();
@@ -43,19 +45,19 @@ class Form
 
 		// Logic
 		void	beSigned( const Bureaucrat &br );
+		void	execute(Bureaucrat const & executor) const;
 
 		// Exceptions
-		class SignGradeTooHighException : public Grade::GradeTooHighException {
+		class GradeTooHighException : public Grade::GradeTooHighException {
 		public:
-			const char			*msg;
-								SignGradeTooHighException(const Grade::GradeTooHighException& e);
 			virtual const char* what() const throw();
 		};
+		class GradeTooLowException : public Grade::GradeTooLowException {
+		public:
+			virtual const char* what() const throw();
+		};
+		
 		class SignGradeTooLowException : public Grade::GradeTooLowException {
-		public:
-			virtual const char* what() const throw();
-		};
-		class ExecGradeTooHighException : public Grade::GradeTooHighException {
 		public:
 			virtual const char* what() const throw();
 		};

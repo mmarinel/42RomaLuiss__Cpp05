@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:28:50 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 18:00:55 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:38:34 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ class Grade
 		// Logic
 		void			increment	( void );
 		void			decrement	( void );
+		// returns < 0 if g1 less than g2
 		static int		compare		( const Grade& g1, const Grade& g2 );
 		
 	private:

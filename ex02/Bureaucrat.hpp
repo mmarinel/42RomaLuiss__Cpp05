@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:51:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 16:51:37 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:49:10 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class Bureaucrat
 		void	increment	( void );
 		void	decrement	( void );
 		void	signForm	( Form &form );
+		void	executeForm( Form const &form );
 
 		// Exceptions
 		class GradeTooHighException : public Grade::GradeTooHighException {

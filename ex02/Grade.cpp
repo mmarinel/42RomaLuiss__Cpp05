@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:54:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 18:03:58 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:10:00 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,6 @@ bool	Grade::operator!=(const Grade &other)
 int Grade::getGrade() const
 {
 	return _grade;
-}
-
-// Exceptions
-const char * Grade::GradeTooHighException::what() const throw()
-{
-	return BOLDRED "Grade: grade too high" RESET;
-}
-const char * Grade::GradeTooLowException::what() const throw()
-{
-	return BOLDRED "Grade: grade too low" RESET;
 }
 
 //Logic

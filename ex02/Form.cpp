@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 19:43:04 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:44:04 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,39 +94,14 @@ void	Form::beSigned( const Bureaucrat &br )
 	else
 		this->_is_signed = true;
 }
-
-static char	*str_concat(const char *s1, const char *s2)
+void	Form::execute(Bureaucrat const & executor) const
 {
-	char	s_cat[std::strlen(s1) + std::strlen(s2) + 1];
-
-	std::memset(s_cat, '\000', std::strlen(s1) + std::strlen(s2) + 1);
-	std::strcat(s_cat, s1);
-	std::strcat(s_cat, s2);
+	if (true == this->_is_signed
+		&& executor.getGrade().compare(this->_exec_grade) < 0)
+		throw ExecGradeTooLowException();
+	else
+		this->action();
 }
-
-// Exceptions
-	Form::SignGradeTooHighException::
-SignGradeTooHighException(const Grade::GradeTooHighException& e)
-: msg(str_concat("Form-grade-to-sign", e.what()))
-{}
-//*** say -v zuzana drll drill drill drll drll drill drill
-const char * Form::SignGradeTooHighException::what() const throw()
-{
-	return (this->msg);
-}
-const char * Form::SignGradeTooLowException::what() const throw()
-{
-	return "Form: grade too low";
-}
-const char * Form::ExecGradeTooHighException::what() const throw()
-{
-	return "Form: grade too high";
-}
-const char * Form::ExecGradeTooHighException::what() const throw()
-{
-	return "Form: grade too high";
-}
-
 
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Form &object)
@@ -141,3 +116,4 @@ std::ostream & operator<<(std::ostream &stream, const Form &object)
 		<< std::endl;
 	return stream;
 }
+//*** say -v zuzana drll drill drill drll drll drill drill

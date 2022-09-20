@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 16:52:25 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:52:26 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ void	Bureaucrat::signForm( Form &form )
 		form.beSigned(*this);
 		std::cout
 			<< GREEN
-			<< this->_name << "signed " << form
+			<< this->_name << " signed " << form
 			<< RESET
 			<< std::endl;
 	}
-	catch(const Form::GradeTooLowException& e)
+	catch(const Form::SignGradeTooLowException& e)
 	{
 		std::cout
 			<< RED
@@ -112,16 +112,25 @@ void	Bureaucrat::signForm( Form &form )
 	}
 	
 }
-
-
-// Exceptions
-const char * Bureaucrat::GradeTooHighException::what() const throw()
+void	Bureaucrat::executeForm( Form const &form )
 {
-	return BOLDRED "Bureaucrat: grade too high" RESET;
-}
-const char * Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return BOLDRED "Bureaucrat: grade too low" RESET;
+	try
+	{
+		form.execute(*this);
+		std::cout
+			<< GREEN
+			<< this->_name << " executed " << form
+			<< RESET
+			<< std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout
+			<< RED
+			<< this->_name << " could not execute " << form
+			<< RESET
+			<< std::endl;
+	}
 }
 
 // Stream operators
