@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:04:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 11:09:51 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:04:51 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class ShrubberyCreationForm : public Form
 	private:
 		std::string	target;
 		// Logic
-		void	action ( void );
+		void	action ( void ) const;
 };
 
 #endif

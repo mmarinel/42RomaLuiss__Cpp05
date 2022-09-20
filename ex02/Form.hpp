@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 10:47:31 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:04:23 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class Form
 {
 	protected:
-		virtual void	action( void ) = 0;
+		virtual void	action( void ) const = 0;
 	public:
 		// Constructors
 		Form();

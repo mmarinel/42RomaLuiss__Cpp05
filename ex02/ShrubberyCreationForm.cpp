@@ -6,18 +6,16 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:08:24 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 11:18:51 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:04:39 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 // Constructors
-ShrubberyCreationForm::ShrubberyCreationForm()
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("nameless", false, 145, 137)
 {
 	std::cout << "\e[0;33mDefault Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
-	
-	this->target.assign("nameless");
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
@@ -39,13 +37,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm &assign)
 {
 	this->target.assign(assign.target);
+	this->Form::operator=(assign);
 
 	return (*this);
 }
 
 
 // Logic
-void	ShrubberyCreationForm::action( void )
+void	ShrubberyCreationForm::action( void ) const
 {
 	std::ofstream	target (this->target + "_shrubbery");
 

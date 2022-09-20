@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 10:58:44 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:21:48 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,12 @@ Form::~Form()
 // Operators
 Form & Form::operator=(const Form &assign)
 {
-	::new(this) Form(assign);
+	(void) assign;
+	// ::new(this) Form(assign);//* We can only instantiate a abstract class as a subobject. 
+	//* But here we do not have the ability if we are being used as a subobject or not.
+	//* Calling new results in calling the constructor (in this case on pre-allocated memory),
+	//* and you can't call constructor of abstract classes excpet in the ones of a derived class
+	//* (which you do explicitely or happens automatically).
 	return *this;
 }
 
