@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:08:13 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 10:45:44 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:00:19 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ const char * Bureaucrat::GradeTooLowException::what() const throw()
 // Form
 const char * Form::GradeTooLowException::what() const throw()
 {
-	return ("Form: grade too low for creation");
+	return (BOLDRED "Form: grade too low for creation" RESET);
 }
 const char * Form::GradeTooHighException::what() const throw()
 {
-	return ("Form: grade too high for creation");
+	return (BOLDRED "Form: grade too high for creation" RESET);
 }
 const char * Form::SignGradeTooLowException::what() const throw()
 {
-	return ("Form: grade too low for signing");
+	return (BOLDRED "Form: grade too low for signing" RESET);
 }
 const char * Form::ExecGradeTooLowException::what() const throw()
 {
-	return ("Form: grade too high for executing");
+	return (BOLDRED "Form: grade too low for executing" RESET);
 }
