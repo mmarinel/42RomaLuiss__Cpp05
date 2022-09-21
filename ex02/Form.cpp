@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 12:19:29 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:50:04 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,12 @@ void	Form::execute(Bureaucrat const & executor) const
 std::ostream & operator<<(std::ostream &stream, const Form &object)
 {
 	stream
-		<< "{ "
-		<< "form name: "<< object.getName()
-		<< ", is signed: " << object.getIs_signed()
-		<< ", grade to sign: " << object.getSign_grade()
-		<< ", grade to execute: " << object.getExec_grade()
-		<< " }"
+		<< "{\n"
+		<< "form name: "<< object.getName() << ",\n"
+		<< "is signed: " << object.getIs_signed() << ",\n"
+		<< "grade to sign: " << object.getSign_grade().getGrade() << ",\n"
+		<< "grade to execute: " << object.getExec_grade().getGrade() << ",\n"
+		<< "}\n"
 		<< std::endl;
 	return stream;
 }

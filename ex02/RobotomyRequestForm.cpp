@@ -67,7 +67,7 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 void	RobotomyRequestForm::action( void ) const
 {
 	// std::system("say -v zuzana drill drullulul drll drill drill drll drll drill drill");
-	std::cout << '\7';
+	// std::cout << '\7';
 	if (true == this->success)
 		std::cout
 			<< GREEN

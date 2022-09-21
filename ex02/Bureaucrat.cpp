@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 12:28:10 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:57:15 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void	Bureaucrat::signForm( Form &form )
 			<< RESET
 			<< std::endl;
 	}
-	
 }
 void	Bureaucrat::executeForm( Form const &form )
 {
@@ -126,7 +125,7 @@ void	Bureaucrat::executeForm( Form const &form )
 	catch(const std::exception& e)
 	{
 		std::cout
-			<< RED
+			<< BOLDRED
 			<< this->_name << " could not execute " << form//.getName()
 			<< RESET
 			<< std::endl;
