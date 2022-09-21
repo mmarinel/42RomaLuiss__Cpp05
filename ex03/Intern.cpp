@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:08:50 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 18:15:24 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:56:16 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,24 @@ size_t	Intern::makeFuncIndex( std::string formName )
 	size_t	i;
 
 	for (i = 0; i < Intern::forms; i++)
-		if (0 == formName.compare(Intern::form_fact->name))
+		if (0 == formName.compare(Intern::form_fact[i].name))
 			break ;
 	return (i);
 }
+
+Form*	Intern::makeShrubberyCreationForm( std::string target )
+{
+	return (new ShrubberyCreationForm(target));
+}
+Form*	Intern::makeRobotomyRequestForm( std::string target )
+{
+	return (new RobotomyRequestForm(target));
+}
+Form*	Intern::makePresidentialPardonForm( std::string target )
+{
+	return (new PresidentialPardonForm(target));
+}
+
 
 // Operators
 Intern & Intern::operator=(const Intern &assign)
@@ -76,4 +90,3 @@ Intern & Intern::operator=(const Intern &assign)
 	(void) assign;
 	return *this;
 }
-

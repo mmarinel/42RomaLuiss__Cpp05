@@ -6,11 +6,12 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 15:03:46 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:45:23 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -93,47 +94,23 @@ static Bureaucrat*	read_bureaucrat( void )
 static Form*	read_form( void )
 {
 	Form*		form;
-	bool		repeat;
-	int			selection;
+	Intern		intern;
+	std::string	formName;
 	std::string	target;
 
-	repeat = true;
-	while (repeat)
+	while (true)
 	{
-		do
-		{
-			read_input(\
-				&selection,\
-				int,\
-				"choose form type:\n|\t1. ShrubberyCreation\t2. RobotomyRequest\t\
-				3. PresidentialPardon|\n");
-		} while (selection < 1 || selection > 3);
 		read_string(target, "choose target name");
-		try
+		read_string(formName, "choose form name");
+		form = intern.makeForm(formName, target);
+		if (nullptr == form)
 		{
-			switch (selection)
-			{
-			case 1:
-				form = new ShrubberyCreationForm(target);
-				break;
-			case 2:
-				form = new RobotomyRequestForm(target);
-				break;
-			case 3:
-				form = new PresidentialPardonForm(target);
-				break;
-
-			default:
-				break;
-			}
-			repeat = false;
-		}
-		catch(const std::exception& e)
-		{
-			std::cout << "Invalid Form data: " << e.what();
+			std::cout << "Press Any key to retry";
 			std::getchar();
-			std::cout  << std::endl;
+			std::cout << std::endl;
 		}
+		else
+			break ;
 	}
 	return  (form);
 }
