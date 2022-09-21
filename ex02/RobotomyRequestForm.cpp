@@ -16,7 +16,7 @@
 RobotomyRequestForm::RobotomyRequestForm()
 	: Form("RobotomyRequestForm", false, 72, 45)
 {
-	std::cout << "\e[0;33mDefault Constructor called of RobotomyRequestForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mDefault Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 
 	this->success = true;
 	this->target.assign("output");
@@ -25,7 +25,7 @@ RobotomyRequestForm::RobotomyRequestForm()
 RobotomyRequestForm::RobotomyRequestForm( const std::string target )
 	: Form("RobotomyRequestForm", false, 72, 45)
 {
-	std::cout << "\e[0;33mFields Constructor called of RobotomyRequestForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mFields Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 
 	this->success = true;
 	this->target.assign(target);
@@ -39,7 +39,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)
 		copy.getExec_grade().getGrade()
 	)
 {
-	std::cout << "\e[0;33mCopy Constructor called of RobotomyRequestForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mCopy Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 
 	this->success = true;
 	*this = copy;
@@ -66,7 +66,8 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 // Logic
 void	RobotomyRequestForm::action( void ) const
 {
-	std::system("say -v zuzana drill drullulul drll drill drill drll drll drill drill");
+	// std::system("say -v zuzana drill drullulul drll drill drill drll drll drill drill");
+	std::cout << '\7';
 	if (true == this->success)
 		std::cout
 			<< GREEN

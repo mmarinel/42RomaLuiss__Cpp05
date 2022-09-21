@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:08:13 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 11:00:19 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:12:41 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,8 @@ const char * Form::SignGradeTooLowException::what() const throw()
 const char * Form::ExecGradeTooLowException::what() const throw()
 {
 	return (BOLDRED "Form: grade too low for executing" RESET);
+}
+const char * Form::ExecFormNotSignedException::what() const throw()
+{
+	return (BOLDRED "Form: cannot execute before signing" RESET);
 }

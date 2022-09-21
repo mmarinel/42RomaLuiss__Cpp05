@@ -15,14 +15,14 @@
 // Constructors
 PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonForm", false, 25, 5)
 {
-	std::cout << "\e[0;33mDefault Constructor called of PresidentialPardonForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mDefault Constructor called of PresidentialPardonForm\e[0m" << std::endl;
 
 	this->target.assign("output");
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const std::string target ) : Form("PresidentialPardonForm", false, 25, 5)
 {
-	std::cout << "\e[0;33mFields Constructor called of PresidentialPardonForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mFields Constructor called of PresidentialPardonForm\e[0m" << std::endl;
 
 	this->target.assign(target);
 }
@@ -35,7 +35,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &cop
 		copy.getExec_grade().getGrade()
 	)
 {
-	std::cout << "\e[0;33mCopy Constructor called of PresidentialPardonForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mCopy Constructor called of PresidentialPardonForm\e[0m" << std::endl;
 
 	*this = copy;
 }

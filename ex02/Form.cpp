@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 14:40:40 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:19:29 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Form::Form()
 	: _name("nameless"),
 	_sign_grade(Grade::_min_grade), _exec_grade(Grade::_min_grade)
 {
-	std::cout << "\e[0;33mDefault Constructor called of Form\e[0m" << std::endl;
+	// std::cout << "\e[0;33mDefault Constructor called of Form\e[0m" << std::endl;
 
 	_is_signed = false;
 }
@@ -26,7 +26,7 @@ Form::Form(const Form &copy)
 	: _name(copy._name),
 	_sign_grade(copy._sign_grade), _exec_grade(copy._exec_grade)
 {
-	std::cout << "\e[0;33mCopy Constructor called of Form\e[0m" << std::endl;
+	// std::cout << "\e[0;33mCopy Constructor called of Form\e[0m" << std::endl;
 
 	_is_signed = copy.getIs_signed();
 }
@@ -41,7 +41,7 @@ Form::Form(
 		: _name(name),
 		_sign_grade(sign_grade), _exec_grade(exec_grade)
 {
-	std::cout << "\e[0;33mFields Constructor called of Form\e[0m" << std::endl;
+	// std::cout << "\e[0;33mFields Constructor called of Form\e[0m" << std::endl;
 
 	_is_signed = is_signed;
 }
@@ -102,10 +102,10 @@ void	Form::beSigned( const Bureaucrat &br )
 void	Form::execute(Bureaucrat const & executor) const
 {
 	if (true == this->_is_signed
-		&& Grade::compare(executor.getGrade(), this->_exec_grade) < 0)
-		throw ExecGradeTooLowException();
-	else
+		&& Grade::compare(executor.getGrade(), this->_exec_grade) >= 0)
 		this->action();
+	else
+		throw ExecGradeTooLowException();
 }
 
 // Stream operators

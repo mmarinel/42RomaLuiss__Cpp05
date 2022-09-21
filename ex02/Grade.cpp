@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:54:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 10:10:00 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:19:56 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ Grade::Grade()
 {
 	this->_grade = Grade::_min_grade.getGrade();
 
-	std::cout << "\e[0;33mDefault Constructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;33mDefault Constructor called of Grade\e[0m" << std::endl;
 }
 
 Grade::Grade(const Grade &copy)
 {
-	std::cout << "\e[0;33mCopy Constructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;33mCopy Constructor called of Grade\e[0m" << std::endl;
 
 	this->_grade = copy._grade;
 }
 
 Grade::Grade( int grade )
 {
-	std::cout << "\e[0;33mFields Constructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;33mFields Constructor called of Grade\e[0m" << std::endl;
 
 	this->_grade = grade;
 	if (this != &Grade::_min_grade && this != &Grade::_max_grade)

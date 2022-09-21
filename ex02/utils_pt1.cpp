@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:39:02 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 16:08:57 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 10:39:46 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,13 @@ char	*str_concat(const char *s1, const char *s2)
 	std::strcat(s_cat, s2);
 
 	return (s_cat);
+}
+
+void	read_string(std::string &str, const char *msg)
+{
+	do
+	{
+		std::cout << msg << ": ";
+		std::getline(std::cin, str, '\n');
+	} while (str.empty());
 }

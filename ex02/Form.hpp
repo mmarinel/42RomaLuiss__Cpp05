@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 12:04:23 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:11:36 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Form
 			const int sign_grade, const int exec_grade);
 		
 		// Destructor
-		~Form();
+		virtual ~Form();
 		
 		// Operators
 		Form & operator=(const Form &assign);
@@ -62,6 +62,10 @@ class Form
 			virtual const char* what() const throw();
 		};
 		class ExecGradeTooLowException : public Grade::GradeTooLowException {
+		public:
+			virtual const char* what() const throw();
+		};
+		class ExecFormNotSignedException : public std::exception {
 		public:
 			virtual const char* what() const throw();
 		};
