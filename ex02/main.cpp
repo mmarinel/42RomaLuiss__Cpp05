@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 12:16:01 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:31:31 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static Form*		read_form( void );
 
 int	main()
 {
-	std::string	form_name;
 	Bureaucrat	*bur;
 	Form		*form;
 	bool		repeat;

@@ -6,7 +6,7 @@
 #    By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 17:34:54 by earendil          #+#    #+#              #
-#    Updated: 2022/09/19 18:26:09 by mmarinel         ###   ########.fr        #
+#    Updated: 2022/09/21 14:33:45 by mmarinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ fclean: clean
 clean:
 	@printf "removing Object files $(OBJS)\n\033[0;37m"
 	$(RMF) $(OBJS_DIR)
+	$(RMF) *_shrubbery
 	@printf "\033[0;35mObject files removed!\n\n\033[0;37m"
 
 re: fclean all
