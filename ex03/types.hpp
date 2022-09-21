@@ -5,27 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:46:23 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 10:49:39 by mmarinel         ###   ########.fr       */
+/*   Created: 2022/09/19 16:50:40 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/20 11:01:38 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
-# define TYPES_H
+#define TYPES_H
 
-/*                                                                            */
-/*                                                                            */
-/*                    Forward Declaration of types                            */
-/*                                                                            */
-/*                                                                            */
+//**             FORWARD DECLARATION FILE                   **//
 
-class AMateria;
-class ICharacter;
-class IMateriaSource;
-class Cure;
-class Ice;
-class Character;
-class MateriaSource;
-
+class Grade;
+class Bureaucrat;
+class Form;
 
 #endif /* TYPES_H */

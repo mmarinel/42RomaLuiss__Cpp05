@@ -6,86 +6,134 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 20:05:16 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:03:46 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cure.hpp"
-#include "Ice.hpp"
-#include "Character.hpp"
-#include "MateriaSource.hpp"
+#include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "Form.hpp"
+
+#include <fstream>
 #include <iostream>
+#include <string>
 
-int	main( void )
+static Bureaucrat*	read_bureaucrat( void );
+static Form*		read_form( void );
+//* end of static declarations
+
+int	main()
 {
-	{
-		IMateriaSource*	src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		ICharacter*	me = new Character("me");
-		AMateria*	tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		delete tmp;
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-		ICharacter*	bob = new Character("bob");
-		me->use(0, *bob);
-		me->use(1, *bob);
-		delete tmp;
-		delete bob;
-		delete me;
-		delete src;
+	Bureaucrat	*bur;
+	Form		*form;
+	bool		repeat;
+
+	std::cin.exceptions(std::ios_base::badbit | std::ios_base::eofbit);
+	try {
+		repeat = true;
+		while (repeat)
+		{
+			try {
+				bur = read_bureaucrat();
+				form = read_form();
+				bur->signForm(*form);
+				bur->executeForm(*form);
+				repeat = false;
+			}
+			catch (Form::ExecGradeTooLowException &e) {
+				std::cout << e.what() << "\npress any key to retry..." << std::endl;
+				getchar();
+			}
+			catch (Form::ExecFormNotSignedException &e) {
+				std::cout << e.what() << "\npress any key to retry..." << std::endl;
+				getchar();
+			}
+			catch (RobotomyRequestForm::RobotomizationFail &e) {
+				std::cout << e.what() << "\npress any key to retry..." << std::endl;
+				getchar();
+			}
+			delete bur;
+			delete form;
+		}
 	}
-	{
-		std::cout << std::endl << std::endl;
-
-		IMateriaSource*	src = new MateriaSource();
-		ICharacter*		me = new Character("Matteo");
-		ICharacter*		boredom = new Character("Boredom");
-		AMateria*		tmp;
-
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		src->learnMateria(new Cure());
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		src->learnMateria(new Cure());
-		src->learnMateria(new Cure());
-		src->learnMateria(new Cure());
-		src->learnMateria(new Cure());
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-		delete tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		delete tmp;
-
-		std::cout << std::endl << BOLDWHITE 
-		<< "Attacking Boredom" << RESET
-			<< std::endl;
-		me->use(1, *boredom);
-
-		std::cout << std::endl << BOLDWHITE
-			<< "Cloning myself...then deleting all materias from the copy" << RESET
-			<< std::endl;
-		Character	clone = *dynamic_cast<Character *>(me);
-		clone.unequip(0);
-		clone.unequip(1);
-		clone.unequip(2);
-		clone.unequip(3);
-		std::cout << CYAN << "me: " << RESET; me->use(1, *boredom);
-		std::cout << CYAN << "clone: " << RESET; clone.use(1, *boredom);
-
-		std::cout << std::endl << BOLDWHITE
-			<< "overwriting original with copy...must have no leaks!" << RESET
-			<< std::endl;
-		*me = clone;
-
-		std::cout << std::endl;
-		delete me;
-		delete boredom;
-		delete src;
+	catch (std::istream::failure &e) {
+		std::cout << "eof caught or stream broken" << std::endl;
 	}
 	return 0;
+}
+
+static Bureaucrat*	read_bureaucrat( void )
+{
+	Bureaucrat*	bur;
+	bool		repeat;
+	std::string	bur_name;
+	int			bur_grade;
+
+	repeat = true;
+	while (repeat)
+	{
+		read_string(bur_name, "enter bureaucrat name");
+		read_input(&bur_grade, int, "insert bureaucrat grade");
+		try {
+			bur = new Bureaucrat(bur_name, bur_grade);
+			repeat = false;
+		}
+		catch (std::exception& e) {
+			std::cout << "Invalid bureaucrat data: " << e.what() << std::endl;
+			std::cout << "Press any key to retry...";
+			std::getchar();
+			std::cout  << std::endl;
+		}
+	}
+	return (bur);
+}
+
+static Form*	read_form( void )
+{
+	Form*		form;
+	bool		repeat;
+	int			selection;
+	std::string	target;
+
+	repeat = true;
+	while (repeat)
+	{
+		do
+		{
+			read_input(\
+				&selection,\
+				int,\
+				"choose form type:\n|\t1. ShrubberyCreation\t2. RobotomyRequest\t\
+				3. PresidentialPardon|\n");
+		} while (selection < 1 || selection > 3);
+		read_string(target, "choose target name");
+		try
+		{
+			switch (selection)
+			{
+			case 1:
+				form = new ShrubberyCreationForm(target);
+				break;
+			case 2:
+				form = new RobotomyRequestForm(target);
+				break;
+			case 3:
+				form = new PresidentialPardonForm(target);
+				break;
+
+			default:
+				break;
+			}
+			repeat = false;
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << "Invalid Form data: " << e.what();
+			std::getchar();
+			std::cout  << std::endl;
+		}
+	}
+	return  (form);
 }

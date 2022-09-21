@@ -6,7 +6,7 @@
 #    By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 17:34:54 by earendil          #+#    #+#              #
-#    Updated: 2022/09/16 11:04:29 by mmarinel         ###   ########.fr        #
+#    Updated: 2022/09/21 14:33:45 by mmarinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ BOLDWHITE	:= "\033[1m\033[37m"
 CC:= @clang++
 CFLAGS:= -std=c++98 -Wall -Werror -Wextra
 
-NAME := interfaces
+NAME := bureaucrat_02
 OBJS_DIR:= bin
 OBJS:= $(addprefix $(OBJS_DIR)/, $(shell find . -name "*.cpp" -print | sed 's/\.cpp/\.o/g' | sed 's/\.\///'))
 INCLUDES:= $(shell find . -name "*.hpp" -print)
@@ -64,6 +64,7 @@ fclean: clean
 clean:
 	@printf "removing Object files $(OBJS)\n\033[0;37m"
 	$(RMF) $(OBJS_DIR)
+	$(RMF) *_shrubbery
 	@printf "\033[0;35mObject files removed!\n\n\033[0;37m"
 
 re: fclean all

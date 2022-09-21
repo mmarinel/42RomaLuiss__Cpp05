@@ -6,36 +6,13 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:39:02 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 11:10:01 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 10:39:46 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.hpp"
 
-void	s_list::add_back( void *content, bool del_content )
-{
-	this->tail->next = new t_list(content, del_content, this->del_cont);
-	this->tail = this->tail->next;
-}
-
-s_list::s_list( void *content, bool del_content, void (*del_cont)(void *content) )
-{
-	this->content = content;
-	this->del_content = del_content;
-	this->del_cont = del_cont;
-	this->tail = this;
-	this->next = nullptr;
-}
-
-s_list::~s_list()
-{
-	if (true == this->del_content)
-		this->del_cont(this->content);
-	if (nullptr != this->next)
-		delete this->next;
-}
-
-void	print_line(const std::string& str, const char *color)
+void	print_line(const char *str, const char *color)
 {
 	std::cout << color
 		<< str
@@ -43,10 +20,30 @@ void	print_line(const std::string& str, const char *color)
 		<< std::endl;
 }
 
-void	print_funcName(const std::string& funcName)
+void	print_funcName(const char *funcName)
 {
 	std::cout
 		<< YELLOW
 		<< "in " << funcName << ": "
 		<< RESET;
+}
+
+char	*str_concat(const char *s1, const char *s2)
+{
+	char	*s_cat = new char[std::strlen(s1) + std::strlen(s2) + 1];
+
+	std::memset(s_cat, '\000', std::strlen(s1) + std::strlen(s2) + 1);
+	std::strcat(s_cat, s1);
+	std::strcat(s_cat, s2);
+
+	return (s_cat);
+}
+
+void	read_string(std::string &str, const char *msg)
+{
+	do
+	{
+		std::cout << msg << ": ";
+		std::getline(std::cin, str, '\n');
+	} while (str.empty());
 }
