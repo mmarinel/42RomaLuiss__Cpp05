@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 14:31:31 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:03:46 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ int	main()
 				getchar();
 			}
 			catch (Form::ExecFormNotSignedException &e) {
+				std::cout << e.what() << "\npress any key to retry..." << std::endl;
+				getchar();
+			}
+			catch (RobotomyRequestForm::RobotomizationFail &e) {
 				std::cout << e.what() << "\npress any key to retry..." << std::endl;
 				getchar();
 			}

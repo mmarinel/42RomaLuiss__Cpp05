@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:04:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/20 17:55:00 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:59:35 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 # include <iostream>
 # include <string>
-# include <random>//* for uniform nbr gen
+# include <time.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 class RobotomyRequestForm : public Form
 {
@@ -29,6 +31,12 @@ class RobotomyRequestForm : public Form
 		
 		// Destructor
 		~RobotomyRequestForm();
+
+		// Exceptions
+		class RobotomizationFail : public std::exception {
+		public:
+			virtual const char* what() const throw();
+		};
 
 		// Operators
 		RobotomyRequestForm & operator=(const RobotomyRequestForm &assign);

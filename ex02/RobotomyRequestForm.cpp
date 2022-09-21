@@ -18,7 +18,8 @@ RobotomyRequestForm::RobotomyRequestForm()
 {
 	// std::cout << "\e[0;33mDefault Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 
-	this->success = true;
+	srand(time(NULL));
+	this->success = rand() % 2 == 0 ? false : true;
 	this->target.assign("output");
 }
 
@@ -27,7 +28,8 @@ RobotomyRequestForm::RobotomyRequestForm( const std::string target )
 {
 	// std::cout << "\e[0;33mFields Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 
-	this->success = true;
+	srand(time(NULL));
+	this->success = rand() % 2 == 0 ? false : true;
 	this->target.assign(target);
 }
 
@@ -41,7 +43,8 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)
 {
 	// std::cout << "\e[0;33mCopy Constructor called of RobotomyRequestForm\e[0m" << std::endl;
 
-	this->success = true;
+	srand(time(NULL));
+	this->success = rand() % 2 == 0 ? false : true;
 	*this = copy;
 }
 
@@ -66,8 +69,7 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 // Logic
 void	RobotomyRequestForm::action( void ) const
 {
-	// std::system("say -v zuzana drill drullulul drll drill drill drll drll drill drill");
-	// std::cout << '\7';
+	std::cout << "drill drullulul drll drill drill drll drll drill drill" << std::endl;
 	if (true == this->success)
 		std::cout
 			<< GREEN
@@ -75,10 +77,13 @@ void	RobotomyRequestForm::action( void ) const
 			<< RESET
 			<< std::endl;
 	else
+	{
 		std::cout
 			<< RED
 			<< this->target << " robotomization failed"
 			<< RESET
 			<< std::endl;
+		throw RobotomyRequestForm::RobotomizationFail();
+	}
 	this->success = !(this->success);
 }
