@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:54:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 15:31:21 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:32:05 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ Grade::Grade()
 {
 	this->_grade = Grade::_min_grade.getGrade();
 
-	std::cout << "\e[0;33mDefault Constructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;33mDefault Constructor called of Grade\e[0m" << std::endl;
 }
 
 Grade::Grade(const Grade &copy)
 {
-	std::cout << "\e[0;33mCopy Constructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;33mCopy Constructor called of Grade\e[0m" << std::endl;
 
 	this->_grade = copy._grade;
 }
 
 Grade::Grade( int grade )
 {
-	std::cout << "\e[0;33mFields Constructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;33mFields Constructor called of Grade\e[0m" << std::endl;
 
 	this->_grade = grade;
 	if (this != &Grade::_min_grade && this != &Grade::_max_grade)
@@ -48,7 +48,7 @@ Grade::Grade( int grade )
 // Destructor
 Grade::~Grade()
 {
-	std::cout << "\e[0;31mDestructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;31mDestructor called of Grade\e[0m" << std::endl;
 }
 
 // Operators
@@ -73,16 +73,6 @@ bool	Grade::operator!=(const Grade &other)
 int Grade::getGrade() const
 {
 	return _grade;
-}
-
-// Exceptions
-const char * Grade::GradeTooHighException::what() const throw()
-{
-	return BOLDRED "Grade: grade too high" RESET;
-}
-const char * Grade::GradeTooLowException::what() const throw()
-{
-	return BOLDRED "Grade: grade too low" RESET;
 }
 
 //Logic

@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 14:53:51 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:35:14 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &assign)
 {
 	print_line("Bureaucrat- Copy Assignment Operator", YELLOW);
 
+	this->~Bureaucrat();
 	::new (this) Bureaucrat(assign);//* plaecement new operator (https://www.cs.technion.ac.il/users/yechiel/c++-faq/placement-new.html)--- :: means "use the new in the global namespace"
 	return *this;
 }

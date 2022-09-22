@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 16:54:32 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:32:31 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Form
 			const int sign_grade, const int exec_grade);
 		
 		// Destructor
-		~Form();
+		virtual ~Form();
 		
 		// Operators
 		Form & operator=(const Form &assign);
@@ -53,6 +53,7 @@ class Form
 		public:
 			virtual const char* what() const throw();
 		};
+		
 		
 	private:
 		const std::string _name;
