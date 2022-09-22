@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/19 16:52:25 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:53:51 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 	try {
 		this->_grade = Grade(grade);//* MAY THROW EXCEPTION !!!!!!!!!!
 	}
-	catch (const Grade::GradeTooLowException &e) {
-		throw Bureaucrat::GradeTooLowException();//! Subject is dumb and made me do this!
+	catch (const Bureaucrat::GradeTooLowException &e) {
+		throw ;//! Subject is dumb and made me do this!
 	}
-	catch (const Grade::GradeTooHighException &e) {
-		throw Bureaucrat::GradeTooHighException();//! Subject is dumb and made me do this!
+	catch (const Bureaucrat::GradeTooHighException &e) {
+		throw ;//! Subject is dumb and made me do this!
 	}
 }
 
@@ -53,8 +53,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &assign)
 {
 	print_line("Bureaucrat- Copy Assignment Operator", YELLOW);
 
-	::new (this) Bureaucrat(assign);//* :: means "use the new in the global namespace"---NEW EXPRESSION vs new operator (https://en.cppreference.com/w/cpp/language/new)
-
+	::new (this) Bureaucrat(assign);//* plaecement new operator (https://www.cs.technion.ac.il/users/yechiel/c++-faq/placement-new.html)--- :: means "use the new in the global namespace"
 	return *this;
 }
 
@@ -75,8 +74,8 @@ void	Bureaucrat::increment( void )
 	try {
 		this->_grade.increment();//* may throw Exception!
 	}
-	catch (const Grade::GradeTooHighException &e) {
-		throw Bureaucrat::GradeTooHighException();//! Subject is dumb and made me do this!
+	catch (const Bureaucrat::GradeTooHighException &e) {
+		throw ;//! Subject is dumb and made me do this!
 	}
 }
 
@@ -85,44 +84,11 @@ void	Bureaucrat::decrement( void )
 	try {
 		this->_grade.decrement();//* may throw Exception!
 	}
-	catch (const Grade::GradeTooLowException &e) {
-		throw Bureaucrat::GradeTooLowException();//! Subject is dumb and made me do this!
+	catch (const Bureaucrat::GradeTooLowException &e) {
+		throw ;//! Subject is dumb and made me do this!
 	}
 }
 
-void	Bureaucrat::signForm( Form &form )
-{
-	try
-	{
-		form.beSigned(*this);
-		std::cout
-			<< GREEN
-			<< this->_name << "signed " << form
-			<< RESET
-			<< std::endl;
-	}
-	catch(const Form::GradeTooLowException& e)
-	{
-		std::cout
-			<< RED
-			<< this->_name << " couldn't sign " << form
-			<< " because " << e.what()
-			<< RESET
-			<< std::endl;
-	}
-	
-}
-
-
-// Exceptions
-const char * Bureaucrat::GradeTooHighException::what() const throw()
-{
-	return BOLDRED "Bureaucrat: grade too high" RESET;
-}
-const char * Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return BOLDRED "Bureaucrat: grade too low" RESET;
-}
 
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Bureaucrat &object)
