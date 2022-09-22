@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:54:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 12:19:56 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:23:37 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Grade::Grade( int grade )
 // Destructor
 Grade::~Grade()
 {
-	std::cout << "\e[0;31mDestructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;31mDestructor called of Grade\e[0m" << std::endl;
 }
 
 // Operators

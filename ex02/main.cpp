@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 15:03:46 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:39:01 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,8 @@ int	main()
 				bur->executeForm(*form);
 				repeat = false;
 			}
-			catch (Form::ExecGradeTooLowException &e) {
-				std::cout << e.what() << "\npress any key to retry..." << std::endl;
-				getchar();
-			}
-			catch (Form::ExecFormNotSignedException &e) {
-				std::cout << e.what() << "\npress any key to retry..." << std::endl;
-				getchar();
-			}
-			catch (RobotomyRequestForm::RobotomizationFail &e) {
-				std::cout << e.what() << "\npress any key to retry..." << std::endl;
+			catch (std::exception &e) {
+				std::cout << "\npress any key to retry..." << std::endl;
 				getchar();
 			}
 			delete bur;
@@ -105,8 +97,8 @@ static Form*	read_form( void )
 			read_input(\
 				&selection,\
 				int,\
-				"choose form type:\n|\t1. ShrubberyCreation\t2. RobotomyRequest\t\
-				3. PresidentialPardon|\n");
+				"choose form type:\n|\t1. ShrubberyCreation\t2. RobotomyRequest\t 3. PresidentialPardon|\n"
+			);
 		} while (selection < 1 || selection > 3);
 		read_string(target, "choose target name");
 		try

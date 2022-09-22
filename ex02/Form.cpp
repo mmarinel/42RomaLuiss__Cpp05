@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 12:50:04 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:25:32 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,10 @@ std::ostream & operator<<(std::ostream &stream, const Form &object)
 {
 	stream
 		<< "{\n"
-		<< "form name: "<< object.getName() << ",\n"
-		<< "is signed: " << object.getIs_signed() << ",\n"
-		<< "grade to sign: " << object.getSign_grade().getGrade() << ",\n"
-		<< "grade to execute: " << object.getExec_grade().getGrade() << ",\n"
+		<< "\tform name: "<< object.getName() << ",\n"
+		<< "\tis signed: " << object.getIs_signed() << ",\n"
+		<< "\tgrade to sign: " << object.getSign_grade().getGrade() << ",\n"
+		<< "\tgrade to execute: " << object.getExec_grade().getGrade() << ",\n"
 		<< "}\n"
 		<< std::endl;
 	return stream;
