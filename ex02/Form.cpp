@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 14:25:32 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:48:48 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ Form::Form(
 
 	_is_signed = is_signed;
 }
-catch (const Form::GradeTooLowException &e) {
-	throw ;//! Subject is dumb and made me do this!
+catch (const Grade::GradeTooLowException &e) {
+	throw Form::GradeTooLowException();//! Subject is dumb and made me do this!
 }
-catch (const Form::GradeTooHighException &e) {
-	throw ;//! Subject is dumb and made me do this!
+catch (const Grade::GradeTooHighException &e) {
+	throw Form::GradeTooHighException();//! Subject is dumb and made me do this!
 }
 
 
@@ -95,17 +95,17 @@ const Grade Form::getExec_grade() const
 void	Form::beSigned( const Bureaucrat &br )
 {
 	if (Grade::compare(br.getGrade(), this->_sign_grade) < 0)
-		throw Form::SignGradeTooLowException();
+		throw SignGradeTooLowException();
 	else
 		this->_is_signed = true;
 }
 void	Form::execute(Bureaucrat const & executor) const
 {
-	if (true == this->_is_signed
-		&& Grade::compare(executor.getGrade(), this->_exec_grade) >= 0)
-		this->action();
-	else
+	if (false == this->_is_signed)
+		throw ExecFormNotSignedException();
+	if ( Grade::compare(executor.getGrade(), this->_exec_grade) < 0 )
 		throw ExecGradeTooLowException();
+	this->action();
 }
 
 // Stream operators

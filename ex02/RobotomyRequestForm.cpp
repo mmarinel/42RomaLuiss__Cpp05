@@ -70,6 +70,7 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 void	RobotomyRequestForm::action( void ) const
 {
 	std::cout << "drill drullulul drll drill drill drll drll drill drill" << std::endl;
+	this->success = !(this->success);
 	if (true == this->success)
 		std::cout
 			<< GREEN
@@ -85,5 +86,4 @@ void	RobotomyRequestForm::action( void ) const
 			<< std::endl;
 		throw RobotomyRequestForm::RobotomizationFail();
 	}
-	this->success = !(this->success);
 }
