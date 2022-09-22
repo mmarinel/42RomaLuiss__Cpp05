@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 16:36:48 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:25:53 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ Form::Form(
 
 	_is_signed = is_signed;
 }
-catch (const Form::GradeTooLowException &e) {
-	throw ;//! Subject is dumb and made me do this!
+catch (const Grade::GradeTooLowException& e) {
+	throw Form::GradeTooLowException();//! Subject is dumb and made me do this!
 }
-catch (const Form::GradeTooHighException &e) {
-	throw ;//! Subject is dumb and made me do this!
+catch (const Grade::GradeTooHighException& e) {
+	throw Form::GradeTooHighException();//! Subject is dumb and made me do this!
 }
 
 
 // Destructor
 Form::~Form()
 {
-	std::cout << "\e[0;31mDestructor called of Form\e[0m" << std::endl;
+	// std::cout << "\e[0;31mDestructor called of Form\e[0m" << std::endl;
 }
 
 
@@ -93,7 +93,7 @@ const Grade Form::getExec_grade() const
 void	Form::beSigned( const Bureaucrat &br )
 {
 	if (Grade::compare(br.getGrade(), this->_sign_grade) < 0)
-		throw Form::GradeTooLowException();
+		throw Form::SignGradeTooLowException();
 	else
 		this->_is_signed = true;
 }

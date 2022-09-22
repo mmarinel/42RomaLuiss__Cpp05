@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 16:32:31 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:24:28 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ class Form
 			virtual const char* what() const throw();
 		};
 		class GradeTooLowException : public Grade::GradeTooLowException {
+		public:
+			virtual const char* what() const throw();
+		};
+		class SignGradeTooLowException : public Form::GradeTooLowException {
 		public:
 			virtual const char* what() const throw();
 		};

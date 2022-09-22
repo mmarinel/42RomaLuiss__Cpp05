@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:08:13 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 16:47:42 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:27:54 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,8 @@ const char * Form::GradeTooHighException::what() const throw()
 {
 	return (BOLDRED "Form: grade too high for creation" RESET);
 }
+const char * Form::SignGradeTooLowException::what() const throw()
+{
+	return (BOLDRED "Form: grade too low for signing" RESET);
+}
+

@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 16:49:11 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:24:23 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main()
 		{
 			try {
 				bur = read_bureaucrat();
+				std::cout << std::endl;
 				form = read_form();
 				bur->signForm(*form);
 				repeat = false;
@@ -104,5 +105,5 @@ static Form*	read_form( void )
 			std::cout  << std::endl;
 		}
 	}
-	return  (form);
+	return (form);
 }

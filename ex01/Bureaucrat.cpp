@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 16:37:35 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/22 17:51:31 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 // Destructor
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "\e[0;31mDestructor called of Bureaucrat\e[0m" << std::endl;
+	// std::cout << "\e[0;31mDestructor called of Bureaucrat\e[0m" << std::endl;
 }
 
 
