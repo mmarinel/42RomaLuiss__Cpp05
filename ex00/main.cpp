@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/23 10:29:39 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:56:05 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,24 @@ static void			bur_dec ( Bureaucrat *bur );
 
 int	main()
 {
-	Bureaucrat	*bur;
+	Bureaucrat	*bur = nullptr;
 
 	std::cin.exceptions(std::ios_base::badbit | std::ios_base::eofbit);
 	try {
 			bur = read_bureaucrat();
 			std::cout << std::endl << *bur << std::endl;
 			bur_modify_grade(bur);
-			delete bur;
 	}
 	catch (std::istream::failure &e) {
 		std::cout << "eof caught or stream broken" << std::endl;
 	}
+	_delete(bur);
 	return 0;
 }
 
 static Bureaucrat*	read_bureaucrat( void )
 {
-	Bureaucrat*	bur;
+	Bureaucrat*	bur = nullptr;
 	bool		repeat;
 	std::string	bur_name;
 	int			bur_grade;

@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 19:24:23 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:54:34 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,38 @@ static Form*		read_form( void );
 
 int	main()
 {
-	Bureaucrat	*bur;
-	Form		*form;
+	Bureaucrat	*bur = nullptr;
+	Form		*form = nullptr;
 	bool		repeat;
 
 	std::cin.exceptions(std::ios_base::badbit | std::ios_base::eofbit);
-	try {
-		repeat = true;
-		while (repeat)
-		{
-			try {
-				bur = read_bureaucrat();
-				std::cout << std::endl;
-				form = read_form();
-				bur->signForm(*form);
-				repeat = false;
-			}
-			catch (std::exception &e) {
-				std::cout << "\npress any key to retry..." << std::endl;
-				getchar();
-			}
-			delete bur;
-			delete form;
+	repeat = true;
+	while (repeat)
+	{
+		try {
+			bur = read_bureaucrat();
+			std::cout << std::endl;
+			form = read_form();
+			bur->signForm(*form);
+			repeat = false;
 		}
-	}
-	catch (std::istream::failure &e) {
-		std::cout << "eof caught or stream broken" << std::endl;
+		catch (std::istream::failure &e) {
+			std::cout << BOLDRED << "eof caught or stream broken" << RESET << std::endl;
+			repeat = false;
+		}
+		catch (std::exception &e) {
+			std::cout << "\npress any key to retry..." << std::endl;
+			getchar();
+		}
+		_delete(bur);
+		_delete(form);
 	}
 	return 0;
 }
 
 static Bureaucrat*	read_bureaucrat( void )
 {
-	Bureaucrat*	bur;
+	Bureaucrat*	bur = nullptr;
 	bool		repeat;
 	std::string	bur_name;
 	int			bur_grade;
@@ -81,7 +80,7 @@ static Bureaucrat*	read_bureaucrat( void )
 
 static Form*	read_form( void )
 {
-	Form*		form;
+	Form*		form = nullptr;
 	bool		repeat;
 	std::string	name;
 	int			sign_grade;

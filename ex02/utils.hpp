@@ -6,14 +6,14 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 10:39:33 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:54:55 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMON_UTILS_H
 #define COMMON_UTILS_H
 
-# define safe_delete(ptr) {delete ptr; ptr = nullptr;}
+# define _delete(ptr) {delete ptr; ptr = nullptr;}
 # define read_input(ptr, type, msg) {\
 	std::string	_;\
 	\
