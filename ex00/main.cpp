@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 15:20:39 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:29:39 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main()
 	std::cin.exceptions(std::ios_base::badbit | std::ios_base::eofbit);
 	try {
 			bur = read_bureaucrat();
+			std::cout << std::endl << *bur << std::endl;
 			bur_modify_grade(bur);
 			delete bur;
 	}

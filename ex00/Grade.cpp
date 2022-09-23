@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:54:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 15:28:31 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:30:22 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Grade::Grade()
 
 Grade::Grade(const Grade &copy)
 {
-	std::cout << "\e[0;33mCopy Constructor called of Grade\e[0m" << std::endl;
+	// std::cout << "\e[0;33mCopy Constructor called of Grade\e[0m" << std::endl;
 
 	this->_grade = copy._grade;
 }
