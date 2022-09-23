@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/23 10:20:09 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:24:39 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,6 @@ void	Bureaucrat::signForm( Form &form )
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Bureaucrat &object)
 {
-	stream << object.getName() << ", bureaucrat grade " << object.getGrade().getGrade() << std::endl;
+	stream << "bureaucrat: " << object.getName() << ", " << object.getGrade() << std::endl;
 	return stream;
 }
