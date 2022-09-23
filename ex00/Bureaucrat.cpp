@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/23 10:12:20 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:19:53 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ void	Bureaucrat::decrement( void )
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Bureaucrat &object)
 {
-	stream << object.getName() << ", bureaucrat grade " << object.getGrade() << std::endl;
+	stream << object.getName() << ", bureaucrat grade " << object.getGrade().getGrade() << std::endl;
 	return stream;
 }
