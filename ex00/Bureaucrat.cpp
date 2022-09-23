@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:42:12 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 16:35:14 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:12:20 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 	try {
 		this->_grade = Grade(grade);//* MAY THROW EXCEPTION !!!!!!!!!!
 	}
-	catch (const Bureaucrat::GradeTooLowException &e) {
-		throw ;//! Subject is dumb and made me do this!
+	catch (const Grade::GradeTooLowException &e) {
+		throw Bureaucrat::GradeTooLowException();//! Subject is dumb and made me do this!
 	}
-	catch (const Bureaucrat::GradeTooHighException &e) {
-		throw ;//! Subject is dumb and made me do this!
+	catch (const Grade::GradeTooHighException &e) {
+		throw Bureaucrat::GradeTooHighException();//! Subject is dumb and made me do this!
 	}
 }
 
@@ -75,8 +75,8 @@ void	Bureaucrat::increment( void )
 	try {
 		this->_grade.increment();//* may throw Exception!
 	}
-	catch (const Bureaucrat::GradeTooHighException &e) {
-		throw ;//! Subject is dumb and made me do this!
+	catch (const Grade::GradeTooHighException &e) {
+		throw Bureaucrat::GradeTooHighException();//! Subject is dumb and made me do this!
 	}
 }
 
@@ -85,8 +85,8 @@ void	Bureaucrat::decrement( void )
 	try {
 		this->_grade.decrement();//* may throw Exception!
 	}
-	catch (const Bureaucrat::GradeTooLowException &e) {
-		throw ;//! Subject is dumb and made me do this!
+	catch (const Grade::GradeTooLowException &e) {
+		throw Bureaucrat::GradeTooLowException();//! Subject is dumb and made me do this!
 	}
 }
 
