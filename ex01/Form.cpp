@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:44:05 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 20:25:53 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:35:48 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ const Grade Form::getExec_grade() const
 }
 
 // Logic
-void	Form::beSigned( const Bureaucrat &br )
+void	Form::beSigned( const Bureaucrat &signer )
 {
-	if (Grade::compare(br.getGrade(), this->_sign_grade) < 0)
+	if (Grade::compare(signer.getGrade(), this->_sign_grade) < 0)
 		throw Form::SignGradeTooLowException();
 	else
 		this->_is_signed = true;

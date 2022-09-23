@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 20:24:28 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:36:14 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Form
 		const Grade			getExec_grade() const;
 
 		// Logic
-		void	beSigned( const Bureaucrat &br );
+		void	beSigned( const Bureaucrat &signer );
 
 		// Exceptions
 		class GradeTooHighException : public Grade::GradeTooHighException {

@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 20:30:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/21 12:11:36 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:36:40 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Form
 		const Grade			getExec_grade() const;
 
 		// Logic
-		void	beSigned( const Bureaucrat &br );
+		void	beSigned( const Bureaucrat &signer );
 		void	execute(Bureaucrat const & executor) const;
 
 		// Exceptions
