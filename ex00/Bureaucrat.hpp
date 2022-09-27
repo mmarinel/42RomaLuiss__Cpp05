@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:51:53 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/22 15:00:59 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/27 14:44:44 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class Bureaucrat
 		// Logic
 		void	increment	( void );
 		void	decrement	( void );
-		void	signForm	( Form &form );
+		// void	signForm	( Form &form ); //* If this was declared but never called, compiler would give no errors!
 
 		// Exceptions
 		class GradeTooHighException : public Grade::GradeTooHighException {
